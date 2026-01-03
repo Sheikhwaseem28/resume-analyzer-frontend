@@ -11,57 +11,26 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  // In Login.jsx, update handleSubmit:
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  setError("");
-  setLoading(true);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    setLoading(true);
 
-  const email = e.target.email.value.trim();
-  const password = e.target.password.value;
+    const email = e.target.email.value.trim();
+    const password = e.target.password.value;
 
-  try {
-    console.log("Attempting login with:", { email, apiUrl: import.meta.env.VITE_API_URL });
-    
-    const res = await api.post("/auth/login", { email, password });
-    console.log("Login response:", res);
-    
-    login(res.token || res.data?.token);
-    localStorage.setItem("token", res.token || res.data?.token);
-    
-    navigate("/analyze", { replace: true });
-  } catch (error) {
-    console.error("Login error details:", error);
-    setError(
-      error.message || 
-      error.response?.data?.message || 
-      "Login failed. Please check your credentials and try again."
-    );
-  } finally {
-    setLoading(false);
-  }
-};
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   setError("");
-  //   setLoading(true);
-
-  //   const email = e.target.email.value.trim();
-  //   const password = e.target.password.value;
-
-  //   try {
-  //     const res = await api.post("/auth/login", { email, password });
-  //     login(res.data.token);
-  //     navigate("/analyze", { replace: true });
-  //   } catch (error) {
-  //     setError(
-  //       error.response?.data?.message || "Login failed. Please check your credentials and try again."
-  //     );
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
+    try {
+      const res = await api.post("/auth/login", { email, password });
+      login(res.data.token);
+      navigate("/analyze", { replace: true });
+    } catch (error) {
+      setError(
+        error.response?.data?.message || "Login failed. Please check your credentials and try again."
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
 
 const handleGoogleLogin = () => {
   // Use the full backend URL for Google OAuth
