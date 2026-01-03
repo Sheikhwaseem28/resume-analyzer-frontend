@@ -11,29 +11,62 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
-    setLoading(true);
+  // In Login.jsx, update handleSubmit:
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setError("");
+  setLoading(true);
 
-    const email = e.target.email.value.trim();
-    const password = e.target.password.value;
+  const email = e.target.email.value.trim();
+  const password = e.target.password.value;
 
-    try {
-      const res = await api.post("/auth/login", { email, password });
-      login(res.data.token);
-      navigate("/analyze", { replace: true });
-    } catch (error) {
-      setError(
-        error.response?.data?.message || "Login failed. Please check your credentials and try again."
-      );
-    } finally {
-      setLoading(false);
-    }
-  };
+  try {
+    console.log("Attempting login with:", { email, apiUrl: import.meta.env.VITE_API_URL });
+    
+    const res = await api.post("/auth/login", { email, password });
+    console.log("Login response:", res);
+    
+    login(res.token || res.data?.token);
+    localStorage.setItem("token", res.token || res.data?.token);
+    
+    navigate("/analyze", { replace: true });
+  } catch (error) {
+    console.error("Login error details:", error);
+    setError(
+      error.message || 
+      error.response?.data?.message || 
+      "Login failed. Please check your credentials and try again."
+    );
+  } finally {
+    setLoading(false);
+  }
+};
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setError("");
+  //   setLoading(true);
+
+  //   const email = e.target.email.value.trim();
+  //   const password = e.target.password.value;
+
+  //   try {
+  //     const res = await api.post("/auth/login", { email, password });
+  //     login(res.data.token);
+  //     navigate("/analyze", { replace: true });
+  //   } catch (error) {
+  //     setError(
+  //       error.response?.data?.message || "Login failed. Please check your credentials and try again."
+  //     );
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
 const handleGoogleLogin = () => {
-  window.location.href = `${import.meta.env.VITE_API_URL}/api/auth/google`;
+  // Use the full backend URL for Google OAuth
+  const backendUrl = import.meta.env.VITE_API_URL;
+  window.location.href = `${backendUrl}/api/auth/google`;
 };
 
 
@@ -212,12 +245,12 @@ const handleGoogleLogin = () => {
 
             {/* Premium Google Login Button */}
             <div>
-              <button
-                type="button"
-                onClick={handleGoogleLogin}
-                disabled={loading}
-                className="w-full flex items-center justify-center gap-3 py-3.5 px-4 border border-slate-700 rounded-xl font-medium text-slate-300 hover:bg-slate-800/60 hover:border-slate-600 transition-all duration-200 active:scale-[0.99] shadow-sm hover:shadow disabled:opacity-60 disabled:cursor-not-allowed group relative overflow-hidden"
-              >
+             <button
+  type="button"
+  onClick={handleGoogleLogin}
+  disabled={loading}
+  className="w-full flex items-center justify-center gap-3 py-3.5 px-4 border border-slate-700 rounded-xl font-medium text-slate-300 hover:bg-slate-800/60 hover:border-slate-600 transition-all duration-200 active:scale-[0.99] shadow-sm hover:shadow disabled:opacity-60 disabled:cursor-not-allowed group relative overflow-hidden"
+>
                 {/* Subtle hover effect */}
                 <div className="absolute inset-0 bg-gradient-to-r from-slate-800/0 via-slate-700/20 to-slate-800/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
                 
