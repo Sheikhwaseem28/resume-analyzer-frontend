@@ -32,9 +32,9 @@ const Login = () => {
     }
   };
 
-  const handleGoogleLogin = () => {
-    window.location.href = `${import.meta.env.VITE_API_URL}/auth/google/callback`;
-  };
+window.location.href =
+  `${import.meta.env.VITE_API_URL}/api/auth/google`;
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900/30 to-slate-900 flex items-center justify-center p-4 md:p-6">
