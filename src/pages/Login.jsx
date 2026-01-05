@@ -41,62 +41,59 @@ const handleGoogleLogin = () => {
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900/30 to-slate-900 flex items-center justify-center p-4 md:p-6">
-      {/* Animated background elements */}
+    <div className="min-h-screen bg-white flex items-center justify-center p-4 md:p-6">
+      {/* Animated background elements - Updated colors */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 -left-20 w-72 h-72 bg-purple-600/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 -right-20 w-72 h-72 bg-cyan-600/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 -left-20 w-72 h-72 bg-blue-50 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 -right-20 w-72 h-72 bg-blue-50 rounded-full blur-3xl"></div>
       </div>
 
       <div className="w-full max-w-[420px] mx-auto relative z-10">
         {/* Brand Header - Left aligned with logo and name */}
         <div className="mb-10 md:mb-12 animate-fade-in">
           <div className="flex items-center gap-4 md:gap-5">
-            {/* SkillScan AI Logo */}
+            {/* SkillScan AI Logo - Updated to dark blue */}
             <div className="flex-shrink-0">
-              <div className="relative w-16 h-16 md:w-18 md:h-18 bg-gradient-to-br from-violet-600 via-purple-600 to-fuchsia-600 rounded-2xl shadow-2xl ring-2 ring-purple-500/30 shadow-purple-500/20">
+              <div className="relative w-16 h-16 md:w-18 md:h-18 bg-gradient-to-br from-blue-800 via-blue-700 to-blue-900 rounded-2xl shadow-lg">
                 <Brain className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 md:w-9 md:h-9 text-white" />
-                <Sparkles className="absolute -top-1 -right-1 w-4 h-4 text-pink-300" />
+                <Sparkles className="absolute -top-1 -right-1 w-4 h-4 text-blue-300" />
               </div>
             </div>
             
-            {/* Brand Name and Tagline */}
+            {/* Brand Name and Tagline - Updated colors */}
             <div className="flex-1">
               <div className="flex items-center gap-2">
-                <h1 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
+                <h1 className="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight">
                   SkillScan
                 </h1>
-                <span className="text-sm md:text-base font-semibold bg-gradient-to-r from-violet-400 to-pink-400 bg-clip-text text-transparent">
+                <span className="text-sm md:text-base font-semibold bg-gradient-to-r from-blue-700 to-blue-900 bg-clip-text text-transparent">
                   AI
                 </span>
               </div>
-              <p className="text-slate-300 font-medium text-sm md:text-base tracking-wide mt-1">
+              <p className="text-gray-600 font-medium text-sm md:text-base tracking-wide mt-1">
                 Intelligent Resume Analyzer
               </p>
             </div>
           </div>
         </div>
 
-        {/* Premium Login Card */}
-        <div className="bg-slate-800/40 backdrop-blur-xl rounded-2xl shadow-2xl p-7 md:p-8 border border-slate-700/50">
-          {/* Card Glow Effect */}
-          <div className="absolute inset-0 bg-gradient-to-r from-violet-500/10 via-transparent to-pink-500/10 rounded-2xl -z-10"></div>
-          
+        {/* Login Card - Updated to use light gray background */}
+        <div className="bg-gray-50 rounded-2xl shadow-lg p-7 md:p-8 border border-gray-200">
           {/* Card Header */}
           <div className="mb-8 md:mb-10 text-center md:text-left">
-            <h2 className="text-2xl md:text-2xl font-bold text-white tracking-tight">
+            <h2 className="text-2xl md:text-2xl font-bold text-gray-900 tracking-tight">
               Welcome Back 👋
             </h2>
-            <p className="text-slate-400 mt-1.5 text-sm md:text-base">
+            <p className="text-gray-600 mt-1.5 text-sm md:text-base">
               Sign in to access your AI-powered resume analyzer
             </p>
           </div>
 
-          {/* Error Message */}
+          {/* Error Message - Updated colors */}
           {error && (
-            <div className="mb-6 p-4 bg-gradient-to-r from-red-900/30 to-pink-900/20 border border-red-800/30 rounded-xl flex items-start space-x-3 animate-fadeIn backdrop-blur-sm">
-              <AlertCircle className="w-5 h-5 text-red-400 mt-0.5 flex-shrink-0" />
-              <span className="text-red-200 text-sm font-medium leading-tight">
+            <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl flex items-start space-x-3 animate-fadeIn">
+              <AlertCircle className="w-5 h-5 text-red-600 mt-0.5 flex-shrink-0" />
+              <span className="text-red-700 text-sm font-medium leading-tight">
                 {error}
               </span>
             </div>
@@ -104,20 +101,20 @@ const handleGoogleLogin = () => {
 
           {/* Login Form */}
           <form onSubmit={handleSubmit} className="space-y-6 md:space-y-7">
-            {/* Email Field */}
+            {/* Email Field - Updated colors */}
             <div className="space-y-2.5">
-              <label className="block text-sm font-semibold text-slate-200 pl-0.5">
+              <label className="block text-sm font-semibold text-gray-900 pl-0.5">
                 Email Address
               </label>
               <div className="relative group">
                 <div className="absolute left-4 top-1/2 transform -translate-y-1/2 group-hover:scale-110 transition-transform">
-                  <Mail className="w-5 h-5 text-slate-400 group-focus-within:text-violet-400" />
+                  <Mail className="w-5 h-5 text-gray-500 group-focus-within:text-blue-600" />
                 </div>
                 <input
                   name="email"
                   type="email"
                   placeholder="you@example.com"
-                  className="w-full pl-12 pr-4 py-3.5 bg-slate-900/40 border border-slate-700 rounded-xl focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500 focus:bg-slate-900/60 transition-all duration-200 outline-none text-white placeholder-slate-500 text-sm md:text-base hover:border-slate-600 disabled:opacity-60 disabled:cursor-not-allowed group"
+                  className="w-full pl-12 pr-4 py-3.5 bg-white border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 focus:bg-white transition-all duration-200 outline-none text-gray-900 placeholder-gray-500 text-sm md:text-base hover:border-gray-400 disabled:opacity-60 disabled:cursor-not-allowed group"
                   required
                   disabled={loading}
                   autoComplete="email"
@@ -125,28 +122,28 @@ const handleGoogleLogin = () => {
               </div>
             </div>
 
-            {/* Password Field */}
+            {/* Password Field - Updated colors */}
             <div className="space-y-2.5">
               <div className="flex items-center justify-between pl-0.5">
-                <label className="block text-sm font-semibold text-slate-200">
+                <label className="block text-sm font-semibold text-gray-900">
                   Password
                 </label>
                 <a
                   href="#"
-                  className="text-xs md:text-sm text-violet-400 hover:text-violet-300 font-medium transition-colors hover:underline"
+                  className="text-xs md:text-sm text-blue-600 hover:text-blue-800 font-medium transition-colors hover:underline"
                 >
                   Forgot password?
                 </a>
               </div>
               <div className="relative group">
                 <div className="absolute left-4 top-1/2 transform -translate-y-1/2 group-hover:scale-110 transition-transform">
-                  <Lock className="w-5 h-5 text-slate-400 group-focus-within:text-violet-400" />
+                  <Lock className="w-5 h-5 text-gray-500 group-focus-within:text-blue-600" />
                 </div>
                 <input
                   name="password"
                   type={showPassword ? "text" : "password"}
                   placeholder="Enter your password"
-                  className="w-full pl-12 pr-12 py-3.5 bg-slate-900/40 border border-slate-700 rounded-xl focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500 focus:bg-slate-900/60 transition-all duration-200 outline-none text-white placeholder-slate-500 text-sm md:text-base hover:border-slate-600 disabled:opacity-60 disabled:cursor-not-allowed"
+                  className="w-full pl-12 pr-12 py-3.5 bg-white border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 focus:bg-white transition-all duration-200 outline-none text-gray-900 placeholder-gray-500 text-sm md:text-base hover:border-gray-400 disabled:opacity-60 disabled:cursor-not-allowed"
                   required
                   disabled={loading}
                   autoComplete="current-password"
@@ -154,7 +151,7 @@ const handleGoogleLogin = () => {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 text-slate-400 hover:text-violet-300 transition-colors p-1 hover:scale-110"
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-blue-600 transition-colors p-1 hover:scale-110"
                   disabled={loading}
                   aria-label={showPassword ? "Hide password" : "Show password"}
                 >
@@ -167,19 +164,19 @@ const handleGoogleLogin = () => {
               </div>
             </div>
 
-            {/* Premium Sign In Button */}
+            {/* Primary Sign In Button - Updated to dark blue */}
             <div className="pt-1">
               <button
                 type="submit"
                 disabled={loading}
                 className={`w-full py-3.5 px-4 rounded-xl font-semibold text-base transition-all duration-300 transform ${
                   loading
-                    ? "bg-gradient-to-r from-violet-700 to-purple-700 cursor-not-allowed opacity-80"
-                    : "bg-gradient-to-r from-violet-600 via-purple-600 to-fuchsia-600 hover:from-violet-500 hover:via-purple-500 hover:to-fuchsia-500 active:scale-[0.99] shadow-lg hover:shadow-xl hover:shadow-purple-500/30 hover:-translate-y-0.5"
+                    ? "bg-blue-800 cursor-not-allowed opacity-80"
+                    : "bg-blue-800 hover:bg-blue-900 active:scale-[0.99] shadow hover:shadow-md"
                 } text-white disabled:cursor-not-allowed relative overflow-hidden group`}
               >
-                {/* Button Glow Effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-violet-400/20 via-transparent to-fuchsia-400/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+                {/* Button Glow Effect - Updated color */}
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-transparent to-blue-600/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
                 
                 {loading ? (
                   <span className="flex items-center justify-center relative">
@@ -200,28 +197,28 @@ const handleGoogleLogin = () => {
               </button>
             </div>
 
-            {/* Premium Divider */}
+            {/* Divider - Updated to cool gray */}
             <div className="relative my-6 md:my-8">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-slate-700/50"></div>
+                <div className="w-full border-t border-gray-300"></div>
               </div>
               <div className="relative flex justify-center">
-                <span className="px-4 bg-slate-800/40 text-slate-400 text-sm font-medium backdrop-blur-sm">
+                <span className="px-4 bg-gray-50 text-gray-600 text-sm font-medium">
                   Or continue with
                 </span>
               </div>
             </div>
 
-            {/* Premium Google Login Button */}
+            {/* Secondary Google Login Button - White with border */}
             <div>
              <button
   type="button"
   onClick={handleGoogleLogin}
   disabled={loading}
-  className="w-full flex items-center justify-center gap-3 py-3.5 px-4 border border-slate-700 rounded-xl font-medium text-slate-300 hover:bg-slate-800/60 hover:border-slate-600 transition-all duration-200 active:scale-[0.99] shadow-sm hover:shadow disabled:opacity-60 disabled:cursor-not-allowed group relative overflow-hidden"
+  className="w-full flex items-center justify-center gap-3 py-3.5 px-4 border border-gray-300 bg-white text-gray-900 rounded-xl font-medium hover:bg-gray-100 hover:border-gray-400 transition-all duration-200 active:scale-[0.99] shadow-sm hover:shadow disabled:opacity-60 disabled:cursor-not-allowed group relative overflow-hidden"
 >
                 {/* Subtle hover effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-slate-800/0 via-slate-700/20 to-slate-800/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-gray-100/0 via-gray-100/20 to-gray-100/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
                 
                 <svg className="w-5 h-5 flex-shrink-0 relative" viewBox="0 0 24 24">
                   <path
@@ -248,13 +245,13 @@ const handleGoogleLogin = () => {
             </div>
           </form>
 
-          {/* Register Link */}
-          <div className="mt-5 md:mt-12 pt-6 md:pt-10 border-t border-slate-700/50">
-            <p className="text-center text-slate-400 font-medium text-sm md:text-base">
+          {/* Register Link - Updated to use light blue for links */}
+          <div className="mt-5 md:mt-12 pt-6 md:pt-10 border-t border-gray-300">
+            <p className="text-center text-gray-600 font-medium text-sm md:text-base">
               Don't have an account?{" "}
               <Link
                 to="/register"
-                className="text-violet-400 hover:text-violet-300 font-semibold hover:underline transition-colors inline-flex items-center gap-2 group"
+                className="text-blue-600 hover:text-blue-800 font-semibold hover:underline transition-colors inline-flex items-center gap-2 group"
               >
                 <span>Create account</span>
                 <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
