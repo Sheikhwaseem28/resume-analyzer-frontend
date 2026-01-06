@@ -1,21 +1,30 @@
 // auth/AuthContext.jsx
 import { createContext, useContext, useState, useEffect } from "react";
+import { jwtDecode } from "jwt-decode";
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true); // Add loading state
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Check for token on initial load
     const checkAuth = () => {
       const token = localStorage.getItem("token");
       
       if (token) {
-        // You might want to validate the token here
-        // For now, just set user to true if token exists
-        setUser({ token }); // Store token in user object
+        try {
+          // Decode token to get user info
+          const decoded = jwtDecode(token);
+          setUser({ 
+            token,
+            ...decoded // Include all decoded user data
+          });
+        } catch (error) {
+          console.error("Invalid token:", error);
+          localStorage.removeItem("token");
+          setUser(null);
+        }
       }
       setLoading(false);
     };
@@ -25,7 +34,15 @@ export const AuthProvider = ({ children }) => {
 
   const login = (token) => {
     localStorage.setItem("token", token);
-    setUser({ token });
+    try {
+      const decoded = jwtDecode(token);
+      setUser({ 
+        token,
+        ...decoded
+      });
+    } catch (error) {
+      console.error("Invalid token:", error);
+    }
   };
 
   const logout = () => {
@@ -34,25 +51,12 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
   };
 
-  // Add token validation if needed
-  const validateToken = async () => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      setUser(null);
-      return;
-    }
-
-    // You can add API call to validate token here
-    // For now, we'll just check if it exists
-    setUser({ token });
-  };
-
   return (
     <AuthContext.Provider value={{ 
       user, 
       login, 
       logout, 
-      loading // Export loading state
+      loading
     }}>
       {children}
     </AuthContext.Provider>

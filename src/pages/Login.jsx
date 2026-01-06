@@ -32,27 +32,23 @@ const Login = () => {
     }
   };
 
-const handleGoogleLogin = () => {
-  // Use the full backend URL for Google OAuth
-  const backendUrl = import.meta.env.VITE_API_URL;
-  window.location.href = `${backendUrl}/api/auth/google`;
-};
-
-
+  const handleGoogleLogin = () => {
+    const backendUrl = import.meta.env.VITE_API_URL;
+    window.location.href = `${backendUrl}/api/auth/google`;
+  };
 
   return (
     <div className="min-h-screen bg-white flex items-center justify-center p-4 md:p-6">
-      {/* Animated background elements - Updated colors */}
+      {/* Animated background elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 -left-20 w-72 h-72 bg-blue-50 rounded-full blur-3xl"></div>
         <div className="absolute bottom-1/4 -right-20 w-72 h-72 bg-blue-50 rounded-full blur-3xl"></div>
       </div>
 
       <div className="w-full max-w-[420px] mx-auto relative z-10">
-        {/* Brand Header - Left aligned with logo and name */}
+        {/* Brand Header */}
         <div className="mb-10 md:mb-12 animate-fade-in">
           <div className="flex items-center gap-4 md:gap-5">
-            {/* SkillScan AI Logo - Updated to dark blue */}
             <div className="flex-shrink-0">
               <div className="relative w-16 h-16 md:w-18 md:h-18 bg-gradient-to-br from-blue-800 via-blue-700 to-blue-900 rounded-2xl shadow-lg">
                 <Brain className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 md:w-9 md:h-9 text-white" />
@@ -60,7 +56,6 @@ const handleGoogleLogin = () => {
               </div>
             </div>
             
-            {/* Brand Name and Tagline - Updated colors */}
             <div className="flex-1">
               <div className="flex items-center gap-2">
                 <h1 className="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight">
@@ -77,9 +72,8 @@ const handleGoogleLogin = () => {
           </div>
         </div>
 
-        {/* Login Card - Updated to use light gray background */}
+        {/* Login Card */}
         <div className="bg-gray-50 rounded-2xl shadow-lg p-7 md:p-8 border border-gray-200">
-          {/* Card Header */}
           <div className="mb-8 md:mb-10 text-center md:text-left">
             <h2 className="text-2xl md:text-2xl font-bold text-gray-900 tracking-tight">
               Welcome Back 👋
@@ -89,7 +83,6 @@ const handleGoogleLogin = () => {
             </p>
           </div>
 
-          {/* Error Message - Updated colors */}
           {error && (
             <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl flex items-start space-x-3 animate-fadeIn">
               <AlertCircle className="w-5 h-5 text-red-600 mt-0.5 flex-shrink-0" />
@@ -99,9 +92,7 @@ const handleGoogleLogin = () => {
             </div>
           )}
 
-          {/* Login Form */}
           <form onSubmit={handleSubmit} className="space-y-6 md:space-y-7">
-            {/* Email Field - Updated colors */}
             <div className="space-y-2.5">
               <label className="block text-sm font-semibold text-gray-900 pl-0.5">
                 Email Address
@@ -122,7 +113,6 @@ const handleGoogleLogin = () => {
               </div>
             </div>
 
-            {/* Password Field - Updated colors */}
             <div className="space-y-2.5">
               <div className="flex items-center justify-between pl-0.5">
                 <label className="block text-sm font-semibold text-gray-900">
@@ -164,7 +154,6 @@ const handleGoogleLogin = () => {
               </div>
             </div>
 
-            {/* Primary Sign In Button - Updated to dark blue */}
             <div className="pt-1">
               <button
                 type="submit"
@@ -175,7 +164,6 @@ const handleGoogleLogin = () => {
                     : "bg-blue-800 hover:bg-blue-900 active:scale-[0.99] shadow hover:shadow-md"
                 } text-white disabled:cursor-not-allowed relative overflow-hidden group`}
               >
-                {/* Button Glow Effect - Updated color */}
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-transparent to-blue-600/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
                 
                 {loading ? (
@@ -197,7 +185,6 @@ const handleGoogleLogin = () => {
               </button>
             </div>
 
-            {/* Divider - Updated to cool gray */}
             <div className="relative my-6 md:my-8">
               <div className="absolute inset-0 flex items-center">
                 <div className="w-full border-t border-gray-300"></div>
@@ -209,15 +196,13 @@ const handleGoogleLogin = () => {
               </div>
             </div>
 
-            {/* Secondary Google Login Button - White with border */}
             <div>
-             <button
-  type="button"
-  onClick={handleGoogleLogin}
-  disabled={loading}
-  className="w-full flex items-center justify-center gap-3 py-3.5 px-4 border border-gray-300 bg-white text-gray-900 rounded-xl font-medium hover:bg-gray-100 hover:border-gray-400 transition-all duration-200 active:scale-[0.99] shadow-sm hover:shadow disabled:opacity-60 disabled:cursor-not-allowed group relative overflow-hidden"
->
-                {/* Subtle hover effect */}
+              <button
+                type="button"
+                onClick={handleGoogleLogin}
+                disabled={loading}
+                className="w-full flex items-center justify-center gap-3 py-3.5 px-4 border border-gray-300 bg-white text-gray-900 rounded-xl font-medium hover:bg-gray-100 hover:border-gray-400 transition-all duration-200 active:scale-[0.99] shadow-sm hover:shadow disabled:opacity-60 disabled:cursor-not-allowed group relative overflow-hidden"
+              >
                 <div className="absolute inset-0 bg-gradient-to-r from-gray-100/0 via-gray-100/20 to-gray-100/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
                 
                 <svg className="w-5 h-5 flex-shrink-0 relative" viewBox="0 0 24 24">
@@ -245,7 +230,6 @@ const handleGoogleLogin = () => {
             </div>
           </form>
 
-          {/* Register Link - Updated to use light blue for links */}
           <div className="mt-5 md:mt-12 pt-6 md:pt-10 border-t border-gray-300">
             <p className="text-center text-gray-600 font-medium text-sm md:text-base">
               Don't have an account?{" "}
@@ -262,23 +246,6 @@ const handleGoogleLogin = () => {
           </div>
         </div>
       </div>
-
-      {/* Add this to your global CSS or component CSS */}
-      <style jsx>{`
-        @keyframes fade-in {
-          from {
-            opacity: 0;
-            transform: translateY(10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-fade-in {
-          animation: fade-in 0.5s ease-out;
-        }
-      `}</style>
     </div>
   );
 };

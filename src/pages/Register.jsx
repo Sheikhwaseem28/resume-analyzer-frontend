@@ -41,10 +41,9 @@ const Register = () => {
       </div>
 
       <div className="w-full max-w-[420px] mx-auto relative z-10">
-        {/* Brand Header - Left aligned with logo and name */}
+        {/* Brand Header */}
         <div className="mb-10 md:mb-12 animate-fade-in">
           <div className="flex items-center gap-4 md:gap-5">
-            {/* SkillScan AI Logo - Updated to dark blue */}
             <div className="flex-shrink-0">
               <div className="relative w-16 h-16 md:w-18 md:h-18 bg-gradient-to-br from-blue-800 via-blue-700 to-blue-900 rounded-2xl shadow-lg">
                 <Brain className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 md:w-9 md:h-9 text-white" />
@@ -52,7 +51,6 @@ const Register = () => {
               </div>
             </div>
             
-            {/* Brand Name and Tagline */}
             <div className="flex-1">
               <div className="flex items-center gap-2">
                 <h1 className="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight">
@@ -71,7 +69,6 @@ const Register = () => {
 
         {/* Register Card */}
         <div className="bg-gray-50 rounded-2xl shadow-lg p-7 md:p-8 border border-gray-200">
-          {/* Card Header */}
           <div className="mb-8 md:mb-10 text-center md:text-left">
             <h2 className="text-2xl md:text-2xl font-bold text-gray-900 tracking-tight">
               Join SkillScan AI 🚀
@@ -81,7 +78,6 @@ const Register = () => {
             </p>
           </div>
 
-          {/* Error Message */}
           {error && (
             <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl flex items-start space-x-3 animate-fadeIn">
               <AlertCircle className="w-5 h-5 text-red-600 mt-0.5 flex-shrink-0" />
@@ -91,9 +87,7 @@ const Register = () => {
             </div>
           )}
 
-          {/* Registration Form */}
           <form onSubmit={handleSubmit} className="space-y-6 md:space-y-7">
-            {/* Name Field */}
             <div className="space-y-2.5">
               <label className="block text-sm font-semibold text-gray-900 pl-0.5">
                 Full Name
@@ -113,7 +107,6 @@ const Register = () => {
               </div>
             </div>
 
-            {/* Email Field */}
             <div className="space-y-2.5">
               <label className="block text-sm font-semibold text-gray-900 pl-0.5">
                 Email Address
@@ -134,7 +127,6 @@ const Register = () => {
               </div>
             </div>
 
-            {/* Password Field */}
             <div className="space-y-2.5">
               <div className="flex items-center justify-between pl-0.5">
                 <label className="block text-sm font-semibold text-gray-900">
@@ -174,8 +166,6 @@ const Register = () => {
               </div>
             </div>
 
-
-            {/* Register Button */}
             <div className="pt-2">
               <button
                 type="submit"
@@ -186,7 +176,6 @@ const Register = () => {
                     : "bg-blue-800 hover:bg-blue-900 active:scale-[0.99] shadow hover:shadow-md"
                 } text-white disabled:cursor-not-allowed relative overflow-hidden group`}
               >
-                {/* Button Glow Effect */}
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-transparent to-blue-600/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
                 
                 {loading ? (
@@ -209,7 +198,6 @@ const Register = () => {
             </div>
           </form>
 
-          {/* Login Navigation */}
           <div className="mt-4 md:mt-12 pt-6 md:pt-10 border-t border-gray-300">
             <p className="text-center text-gray-600 font-medium text-sm md:text-base">
               Already have an account?{" "}
@@ -225,26 +213,7 @@ const Register = () => {
             </p>
           </div>
         </div>
-
-
       </div>
-
-      {/* CSS Animation */}
-      <style jsx>{`
-        @keyframes fade-in {
-          from {
-            opacity: 0;
-            transform: translateY(10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-fade-in {
-          animation: fade-in 0.5s ease-out;
-        }
-      `}</style>
     </div>
   );
 };
