@@ -24,14 +24,12 @@ api.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-/* Handle Expired / Invalid Token */
+/* Handle Expired / Invalid Token - MODIFIED */
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response?.status === 401) {
-      localStorage.removeItem("token");
-      window.location.href = "/login";
-    }
+    // Don't auto-redirect on 401 errors
+    // Let each component handle 401 errors individually
     return Promise.reject(error);
   }
 );
