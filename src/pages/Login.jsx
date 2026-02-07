@@ -37,6 +37,25 @@ const Login = () => {
     window.location.href = `${backendUrl}/api/auth/google`;
   };
 
+  const handleDemoLogin = async () => {
+    setError("");
+    setLoading(true);
+    try {
+      const res = await api.post("/auth/login", {
+        email: "demo@gmail.com",
+        password: "123456"
+      });
+      login(res.data.token);
+      navigate("/analyze", { replace: true });
+    } catch (error) {
+      setError(
+        error.response?.data?.message || "Demo login failed."
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white flex items-center justify-center p-4 md:p-6">
       {/* Animated background elements */}
@@ -55,7 +74,7 @@ const Login = () => {
                 <Sparkles className="absolute -top-1 -right-1 w-4 h-4 text-blue-300" />
               </div>
             </div>
-            
+
             <div className="flex-1">
               <div className="flex items-center gap-2">
                 <h1 className="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight">
@@ -158,14 +177,13 @@ const Login = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className={`w-full py-3.5 px-4 rounded-xl font-semibold text-base transition-all duration-300 transform ${
-                  loading
+                className={`w-full py-3.5 px-4 rounded-xl font-semibold text-base transition-all duration-300 transform ${loading
                     ? "bg-blue-800 cursor-not-allowed opacity-80"
                     : "bg-blue-800 hover:bg-blue-900 active:scale-[0.99] shadow hover:shadow-md"
-                } text-white disabled:cursor-not-allowed relative overflow-hidden group`}
+                  } text-white disabled:cursor-not-allowed relative overflow-hidden group`}
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-transparent to-blue-600/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
-                
+
                 {loading ? (
                   <span className="flex items-center justify-center relative">
                     <svg className="animate-spin h-5 w-5 mr-3 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -182,6 +200,17 @@ const Login = () => {
                     </svg>
                   </span>
                 )}
+              </button>
+            </div>
+
+            <div className="pt-2">
+              <button
+                type="button"
+                onClick={handleDemoLogin}
+                disabled={loading}
+                className="w-full py-3.5 px-4 rounded-xl font-semibold text-base bg-emerald-600 hover:bg-emerald-700 active:scale-[0.99] shadow hover:shadow-md text-white transition-all duration-300 transform disabled:cursor-not-allowed disabled:opacity-80"
+              >
+                Demo Login
               </button>
             </div>
 
@@ -204,7 +233,7 @@ const Login = () => {
                 className="w-full flex items-center justify-center gap-3 py-3.5 px-4 border border-gray-300 bg-white text-gray-900 rounded-xl font-medium hover:bg-gray-100 hover:border-gray-400 transition-all duration-200 active:scale-[0.99] shadow-sm hover:shadow disabled:opacity-60 disabled:cursor-not-allowed group relative overflow-hidden"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-gray-100/0 via-gray-100/20 to-gray-100/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
-                
+
                 <svg className="w-5 h-5 flex-shrink-0 relative" viewBox="0 0 24 24">
                   <path
                     fill="#4285F4"
